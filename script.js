@@ -30,28 +30,6 @@ document.querySelectorAll("button").forEach(button => {
         }
     });
 });
-
-// Function to evaluate mathematical expressions
-function evaluateExpression(expression) {
-    // Handle mathematical operations and functions
-    expression = expression.replace(/x/g, "*")
-                           .replace(/\^/g, "**")
-                           .replace(/log/g, "Math.log10")
-                           .replace(/ln/g, "Math.log")
-                           .replace(/sqrt/g, "Math.sqrt")
-                           .replace(/abs/g, "Math.abs")
-                           .replace(/exp/g, "Math.exp")
-                           .replace(/pi/g, "Math.PI")
-                           .replace(/!/, "factorial");
-
-    // Evaluate expression
-    try {
-        return eval(expression);
-    } catch (e) {
-        return "Error";
-    }
-}
-
 // Factorial function
 function factorial(n) {
     if (n < 0) return 0;
