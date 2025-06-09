@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
     height: 100vh;
     margin: 0;
@@ -10,9 +10,9 @@ body {
 
 /* Calculator container */
 .calculator {
-    width: 500px;
-    height: 100vh;
-    background-color: #58556827;
+    width: 350px;
+    height: 95vh; 
+    background-color: #5e5a759a;
     border-radius: 30px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -20,57 +20,73 @@ body {
 }
 
 /* Input display */
-input[type="text"] {
-    background: white;
-    color: black;
-    width: 90%;
-    height: 60px;
+#result {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80px;
+    margin-bottom: 15px;
+    border: 1px;
+    background-color: white;
     padding: 15px;
-    font-size: 24px;
+    font-family: Arial, sans-serif;
+    border-radius: 10px; 
+}
+
+#input-row {
+    text-align: left;
+    font-size: 1.2em;
+    color: #555; /* Lighter color for the input */
+    overflow-x: auto;
+}
+
+#output-row {
     text-align: right;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000; /* Dark color for output */
+    overflow-x: auto;
 }
 
 /* Button grid */
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 5px; 
 }
 
 /* Button styling */
 button {
-    padding: 20px;
-    font-size: 18px;
+    padding: 15px; /* Slightly increased padding for bigger buttons */
+    font-size: 22px; /* Slightly larger font */
     background-color: #a2aaa3e5;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* More rounded corners */
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease; /* Smooth transitions */
 }
 
 button.function {
     background-color: #0a2333;
 }
 
-
 button.operator {
     background-color: #c8eb69;
 }
 
-
 button#equal {
-    background-color: #e74c3c;
+   background-color: #e79a9a;
+   font-size: 24px; /* Larger font size for equal button */
 }
-
 
 button:hover {
     background-color: white;
+    color: #111010;
+    transform: scale(1.1); /* Slight scaling effect on hover */
 }
 
 button:active {
     background-color: #2980b9;
+    transform: scale(0.98); /* Slight shrink on click */
 }

@@ -8,54 +8,47 @@
     </head>
     <body>
         <div class="calculator">
-            <input type="text" id="result" disabled />
+            <!-- <input type="text" id="result" disabled /> -->
+            <div id="result">
+                <div id="input-row"></div>
+                <div id="output-row"></div>
+            </div>
 
             <!-- Calculator buttons -->
             <div class="buttons">
+                <button class="function">π</button>
+                <button class="function">e</button>
+                <button class="function">√</button>
+                <button class="function">^</button>
+                <button class="function">log</button>
+                <button class="function">ln</button>
                 <button class="function">sin</button>
                 <button class="function">cos</button>
                 <button class="function">tan</button>
-                <button class="function">log</button>
-                <button class="function">ln</button>
-
-                <button class="function">sqrt</button>
-                <button class="function">abs</button>
-                <button class="function">exp</button>
-                <button class="function">pi</button>
-                <button class="function">!</button>
-
-                <button class="function">^</button>
-                <button class="function">(</button>
-                <button class="function">)</button>
-                <button class="function">sin⁻¹</button>
+               <button class="function">sin⁻¹</button>
                 <button class="function">cos⁻¹</button>
-
-                <button class="function">tan⁻¹</button>
+                <button class="function">tan⁻¹</button> 
+                <button class="function">%</button>
+                <button class="function">^</button>
+                <button class="function">!</button>
                 <button class="operator">AC</button>
-                <button class="operator">%</button>
-                <button class="operator">^</button>
-                <button class="operator">+/-</button>
-
                 <button class="number">7</button>
                 <button class="number">8</button>
                 <button class="number">9</button>
                 <button class="operator">x</button>
                 <button class="number">4</button>
-
                 <button class="number">5</button>
                 <button class="number">6</button>
                 <button class="operator">+</button>
                 <button class="number">1</button>
                 <button class="number">2</button>
-
                 <button class="number">3</button>
                 <button class="operator">/</button>
                 <button class="number">0</button>
                 <button class="number">.</button>
                 <button class="operator">C</button>
-
-                <button class="equal">=</button>
-            </div>  
+                <button id="equal">=</button>
+            </div>
         </div>
 
         <script src="script.js"></script>

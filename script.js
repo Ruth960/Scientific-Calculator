@@ -1,59 +1,93 @@
-const resultDisplay = document.getElementById("result");
-let currentInput = "";
+document.addEventListener('DOMContentLoaded', () => {
+    const resultDiv = document.getElementById('output-row');
+    let input = '0'; 
 
-// Function to handle button clicks
-document.querySelectorAll("button").forEach(button => {
-    button.addEventListener("click", (event) => {
-        const value = event.target.textContent;
+    // Handle button click events
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const buttonText = e.target.textContent;
 
-        if (value === "=") {
-            // Evaluate the expression
-            try {
-                currentInput = evaluateExpression(currentInput);
-                resultDisplay.value = currentInput;
-            } catch (e) {
-                resultDisplay.value = "Error";
-                currentInput = "";
+            // If it's a number or operator, add it to the input
+            if (!isNaN(buttonText) || buttonText === '.' || buttonText === 'π' || buttonText === 'e') {
+                input += buttonText === 'π' ? Math.PI : buttonText === 'e' ? Math.E : buttonText;
+                resultDiv.textContent = input;
+            } 
+            // If it's an operator, append it to the input
+            else if (buttonText === '+' || buttonText === '-' || buttonText === 'x' || buttonText === '/' || buttonText === '%' || buttonText === '^') {
+                input += ' ' + buttonText + ' ';
+                resultDiv.textContent = input;
             }
-        } else if (value === "AC") {
-            // Clear the display
-            currentInput = "";
-            resultDisplay.value = "";
-        } else if (value === "C") {
-            // Remove the last character
-            currentInput = currentInput.slice(0, -1);
-            resultDisplay.value = currentInput;
-        } else {
-            // Append value to current input
-            currentInput += value;
-            resultDisplay.value = currentInput;
-        }
+            
+            else if (buttonText === 'C') {
+                input = input.slice(0, -1); // remoove the last element
+                resultDiv.textContent = input;
+            }
+            // Handle All Clear button (AC)
+            else if (buttonText === 'AC') {
+                input = '';
+                resultDiv.textContent = input;
+            }
+            // Handle the equal button (=)
+            else if (buttonText === '=') {
+                try {
+                    // Evaluate the input
+                    input = eval(input.replace('x', '*').replace('%', '/100').replace('^', '**'));
+                    resultDiv.textContent = input;
+                } catch (error) {
+                    resultDiv.textContent = 'Error';
+                    input = '';
+                }
+            }
+            // Implement additional operations for functions like sqrt, log, etc. here.
+            else if (buttonText === '√') {
+                input = Math.sqrt(parseFloat(input));
+                resultDiv.textContent = input;
+            } 
+            else if (buttonText === 'log') {
+                input = Math.log10(parseFloat(input));
+                resultDiv.textContent = input;
+            }
+            else if (buttonText === 'ln') {
+                input = Math.log(parseFloat(input));
+                resultDiv.textContent = input;
+            }
+            else if (buttonText === 'sin') {
+                input = Math.sin(parseFloat(input));
+                resultDiv.textContent = input;
+            }
+            else if (buttonText === 'cos') {
+                input = Math.cos(parseFloat(input));
+                resultDiv.textContent = input;
+            }
+            else if (buttonText === 'tan') {
+                input = Math.tan(parseFloat(input));
+                resultDiv.textContent = input;
+            }
+            else if (buttonText === 'sin⁻¹') {
+                input = Math.asin(parseFloat(input));
+                resultDiv.textContent = input;
+            }
+            else if (buttonText === 'cos⁻¹') {
+                input = Math.acos(parseFloat(input));
+                resultDiv.textContent = input;
+            }
+            else if (buttonText === 'tan⁻¹') {
+                input = Math.atan(parseFloat(input));
+                resultDiv.textContent = input;
+            }
+            else if (buttonText === '!') {
+                input = factorial(parseInt(input));
+                resultDiv.textContent = input;
+            }
+        });
     });
-});
 
-// Function to evaluate mathematical expressions
-function evaluateExpression(expression) {
-    // Handle mathematical operations and functions
-    expression = expression.replace(/x/g, "*")
-                           .replace(/\^/g, "**")
-                           .replace(/log/g, "Math.log10")
-                           .replace(/ln/g, "Math.log")
-                           .replace(/sqrt/g, "Math.sqrt")
-                           .replace(/abs/g, "Math.abs")
-                           .replace(/exp/g, "Math.exp")
-                           .replace(/pi/g, "Math.PI")
-                           .replace(/!/, "factorial");
-
-    // Evaluate expression
-    try {
-        return eval(expression);
-    } catch (e) {
-        return "Error";
+    // Factorial function for the '!' button
+    function factorial(n) {
+        if (n === 0 || n === 1) {
+            return 1;
+        }
+        return n * factorial(n - 1);
     }
-}
-
-// Factorial function
-function factorial(n) {
-    if (n < 0) return 0;
-    return (n === 0) ? 1 : n * factorial(n - 1);
-}
+});
